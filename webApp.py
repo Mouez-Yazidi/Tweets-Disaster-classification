@@ -28,7 +28,7 @@ def main():
         if st.button('Predic class'):
             model = load_model('model.h5')
             tokenizer = Tokenizer(split=' ')
-            tokenizer.fit_on_texts()
+            tokenizer.fit_on_texts(text)
             X = tokenizer.texts_to_sequences(text)
             pred = model.predict(X)
             st.success(f"The news item is {pred}")
