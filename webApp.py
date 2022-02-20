@@ -32,6 +32,7 @@ def main():
             X = np.array(tokenizer.texts_to_sequences(text))
             X=pad_sequences(X,25,padding='post')
             pred = model.predict(X)
+            pred = np.where(pred >0.5,1,0)
             st.success(f"The news item is {pred}")
 
 if __name__=='__main__':
