@@ -29,7 +29,8 @@ def main():
             model = load_model('model.h5')
             tokenizer = Tokenizer(split=' ')
             tokenizer.fit_on_texts(text)
-            X = tokenizer.texts_to_sequences(text)
+            X = np.array(tokenizer.texts_to_sequences(text))
+            X=pad_sequences(X,25,padding='post')
             pred = model.predict(X)
             st.success(f"The news item is {pred}")
 
