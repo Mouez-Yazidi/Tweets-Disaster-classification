@@ -1,11 +1,21 @@
+#import packages
 import streamlit as st
-import string 
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import tensorflow
+from tensorflow import keras
+from tensorflow.keras.models import load_model
+from keras.preprocessing.text import Tokenizer
+from keras.preprocessing.sequence import pad_sequences
+plt.style.use('seaborn')
+
 def main():
     Menu=['Overview','home','About']
     choice=st.sidebar.selectbox('Menu',Menu)
-    if choice=='Overview':
-        st.title('Hate Speech for Tunisian Chat')
-        st.image('https://www.theparliamentmagazine.eu/siteimg/news-main/ugc-1/fullnews/news/23340/22688_original.jpg')
+    if choice=='home':
+        st.title('Natural Language Processing with Disaster Tweets')
+        st.image('https://digitalfireflymarketing.com/wp-content/uploads/2013/10/pablo-17-2.png')
         st.markdown("""
         <style>
         .big-font {
@@ -13,18 +23,15 @@ def main():
         }
         </style>
         """, unsafe_allow_html=True)
-        st.markdown('<p class="big-font">this App consist of <br> making a prediction for the hate speech in the Tunisian"s chat</p>', unsafe_allow_html=True)
-    if choice=='home':
-        st.title('Hate Speech for Tunisian Chat')
-        comment=st.text_area('Enter text', height=200)
-        if st.button('Predict'):
-            st.write(comment)
-            res = sum([i.strip(string.punctuation).isalpha() for i in comment.split()])
-            if res > 120:
-                st.image('https://thumbs.dreamstime.com/b/print-172932780.jpg')
-            else:
-                st.image('https://www.seekpng.com/png/detail/1-10353_check-mark-green-png-green-check-mark-svg.png')
+        st.markdown('<p class="big-font">Enter Tweet here :</p>', unsafe_allow_html=True)
+        text = st.text_area(label='',height=200)
+        if st.button('Predic class'):
+            model = load_model('model.h5')
+            tokenizer = Tokenizer(split=' ')
+            tokenizer.fit_on_texts()
+            X = tokenizer.texts_to_sequences(text)
+            pred = model.predict(X)
+            st.success(f"The news item is {pred}")
+
 if __name__=='__main__':
     main()
-
-
