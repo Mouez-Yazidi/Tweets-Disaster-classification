@@ -88,9 +88,11 @@ def main():
             X,text1 = text_to_seq(text)
             pred = model.predict(X)
             pred = np.where(pred >0.5,1,0)
-            st.success(f"The news item is {pred}")
-            st.success(X)
-            st.success(text1)
+            if pred ==1:
+                st.image('https://c.tenor.com/J4AkSzHfCMUAAAAC/emergency-animated.gif')
+                st.success("This tweet is Disaster tweet")
+            else : 
+                st.success("This tweet is Normal tweet")
 
 if __name__=='__main__':
     main()
