@@ -85,7 +85,7 @@ def main():
         text = st.text_area(label='',height=200)
         if st.button('Predic class'):
             model = load_model('model.h5')
-            if len(text.split)<4:
+            if len(text.split())<4:
                 st.error('Tweet must be more the 4 words')
             else:
                 X,text1 = text_to_seq(text)
