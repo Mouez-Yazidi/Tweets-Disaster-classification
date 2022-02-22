@@ -89,10 +89,12 @@ def main():
             pred = model.predict(X)
             pred = np.where(pred >0.5,1,0)
             if pred ==1:
+                st.markdown('<p class="big-font">This tweet is Disaster tweet :</p>', unsafe_allow_html=True)
                 st.image('https://c.tenor.com/J4AkSzHfCMUAAAAC/emergency-animated.gif')
-                st.success("This tweet is Disaster tweet")
+                
             else : 
-                st.success("This tweet is Normal tweet")
+                st.markdown('<p class="big-font">This tweet is Normal tweet :</p>', unsafe_allow_html=True)
+                st.image('https://thumbs.gfycat.com/AgedSleepyCalf-size_restricted.gif')
 
 if __name__=='__main__':
     main()
