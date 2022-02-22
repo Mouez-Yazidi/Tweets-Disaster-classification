@@ -61,11 +61,13 @@ def clean_text(text):
     return text
 def text_to_seq(text):
     text = clean_text(text)
+    l=[]
+    l.append(text)
     tokenizer = Tokenizer(split=' ')
-    tokenizer.fit_on_texts(text)
-    X = tokenizer.texts_to_sequences(text)
+    tokenizer.fit_on_texts(l)
+    X = tokenizer.texts_to_sequences(l)
     X=pad_sequences(X,25,padding='post')
-    return X,text
+    return X,l
 def main():
     Menu=['Overview','home','About']
     choice=st.sidebar.selectbox('Menu',Menu)
