@@ -81,8 +81,9 @@ def main():
             model = load_model('model.h5')
             X = text_to_seq(text)
             pred = model.predict(X)
-            #pred = np.where(pred >0.5,1,0)
+            pred = np.where(pred >0.5,1,0)
             st.success(f"The news item is {pred}")
+            st.success(X)
 
 if __name__=='__main__':
     main()
