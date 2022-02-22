@@ -50,12 +50,14 @@ def clean_text(text):
     text = re.sub(r'\d+',"",text)
     #remove multiple spaces
     text = re.sub(r'\s+'," ",text)
-    #remove single caracter
-    text = re.sub(r'\s+[a-zA-Z]\s+'," ",text)
+    
+    #text = re.sub(r'\s+[a-zA-Z]\s+'," ",text)
     #remove stop Words
     text = remove_Stopwords(text)
     # text normalization
     text = lemmatize(text)
+    #remove single caracter
+    text = re.sub(r'\s+[a-zA-Z]\s+'," ",text)
     return text
 def text_to_seq(text):
     text = clean_text(text)
