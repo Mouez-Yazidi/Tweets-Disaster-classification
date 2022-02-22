@@ -59,7 +59,7 @@ def text_to_seq(text):
     text = clean_text(text)
     tokenizer = Tokenizer(split=' ')
     tokenizer.fit_on_texts(text)
-    X = np.array(tokenizer.texts_to_sequences(text))
+    X = tokenizer.texts_to_sequences(text)
     X=pad_sequences(X,25,padding='post')
     return X
 def main():
