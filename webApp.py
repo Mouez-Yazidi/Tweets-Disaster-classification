@@ -54,7 +54,7 @@ def clean_text(text):
     text = remove_Stopwords(text)
     # text normalization
     text = lemmatize(text)
-    return text
+    return list(text)
 def text_to_seq(text):
     text = clean_text(text)
     tokenizer = Tokenizer(split=' ')
