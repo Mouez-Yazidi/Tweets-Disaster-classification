@@ -85,16 +85,19 @@ def main():
         text = st.text_area(label='',height=200)
         if st.button('Predic class'):
             model = load_model('model.h5')
-            X,text1 = text_to_seq(text)
-            pred = model.predict(X)
-            pred = np.where(pred >0.5,1,0)
-            if pred ==1:
-                st.markdown('<p class="big-font">This tweet is Disaster tweet :</p>', unsafe_allow_html=True)
-                st.image('https://c.tenor.com/J4AkSzHfCMUAAAAC/emergency-animated.gif')
+            if len(text.split)<4:
+                st.error('Tweet must be more the 4 words')
+            else:
+                X,text1 = text_to_seq(text)
+                pred = model.predict(X)
+                pred = np.where(pred >0.5,1,0)
+                if pred ==1:
+                    st.markdown('<p class="big-font">This tweet is Disaster tweet :</p>', unsafe_allow_html=True)
+                    st.image('https://c.tenor.com/J4AkSzHfCMUAAAAC/emergency-animated.gif')
                 
-            else : 
-                st.markdown('<p class="big-font">This tweet is Normal tweet :</p>', unsafe_allow_html=True)
-                st.image('https://thumbs.gfycat.com/AgedSleepyCalf-size_restricted.gif')
+                else : 
+                    st.markdown('<p class="big-font">This tweet is Normal tweet :</p>', unsafe_allow_html=True)
+                    st.image('https://thumbs.gfycat.com/AgedSleepyCalf-size_restricted.gif')
 
 if __name__=='__main__':
     main()
