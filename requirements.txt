@@ -3,3 +3,5 @@ keras
 matplotlib
 pandas
 numpy
+nltk
+re
