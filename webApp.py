@@ -33,7 +33,7 @@ def lemmatize(text):
     return " ".join([lemmatizer.lemmatize(i, get_wordnet_pos(i)) for i in text.split()])
 def clean_text(text):
     # convert catacter to lowercase
-    text=text.str.lower()
+    text=text.lower()
     #remove URLS
     text =re.sub(r"http\S+", "", text)
     #remove ponctuation
