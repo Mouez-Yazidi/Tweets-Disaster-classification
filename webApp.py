@@ -23,7 +23,7 @@ def remove_Stopwords(text):
     return " ".join([i for i in text.split() if i not in stopW])
 
 def get_wordnet_pos(word):
-   # """Map POS tag to first character lemmatize() accepts"""
+
     tag = nltk.pos_tag([word])[0][1][0].upper()
     tag_dict = {"J": wordnet.ADJ,
                 "N": wordnet.NOUN,
