@@ -61,7 +61,7 @@ def text_to_seq(text):
     tokenizer.fit_on_texts(text)
     X = tokenizer.texts_to_sequences(text)
     X=pad_sequences(X,25,padding='post')
-    return X
+    return X,text
 def main():
     Menu=['Overview','home','About']
     choice=st.sidebar.selectbox('Menu',Menu)
@@ -79,11 +79,12 @@ def main():
         text = st.text_area(label='',height=200)
         if st.button('Predic class'):
             model = load_model('model.h5')
-            X = text_to_seq(text)
+            X,text1 = text_to_seq(text)
             pred = model.predict(X)
             pred = np.where(pred >0.5,1,0)
             st.success(f"The news item is {pred}")
             st.success(X)
+            st.success(text1)
 
 if __name__=='__main__':
     main()
