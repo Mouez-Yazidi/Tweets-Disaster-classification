@@ -9,6 +9,8 @@ from tensorflow.keras.models import load_model
 from keras.preprocessing.text import Tokenizer
 from keras.preprocessing.sequence import pad_sequences
 import nltk 
+nltk.download('stopwords')
+nltk.download('wordnet')
 from nltk.stem import WordNetLemmatizer
 from nltk.corpus import stopwords,wordnet
 import re
