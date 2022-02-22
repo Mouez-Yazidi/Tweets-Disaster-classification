@@ -11,6 +11,7 @@ from keras.preprocessing.sequence import pad_sequences
 import nltk 
 nltk.download('stopwords')
 nltk.download('wordnet')
+nltk.download('averaged_perceptron_tagger')
 from nltk.stem import WordNetLemmatizer
 from nltk.corpus import stopwords,wordnet
 import re
