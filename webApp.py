@@ -69,7 +69,7 @@ def text_to_seq(text):
     X=pad_sequences(X,25,padding='post')
     return X,l
 def main():
-    Menu=['Overview','home','About']
+    Menu=['home']
     choice=st.sidebar.selectbox('Menu',Menu)
     if choice=='home':
         st.title('Natural Language Processing with Disaster Tweets')
