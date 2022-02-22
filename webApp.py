@@ -12,6 +12,7 @@ import nltk
 nltk.download('stopwords')
 nltk.download('wordnet')
 nltk.download('averaged_perceptron_tagger')
+nltk.download('omw-1.4')
 from nltk.stem import WordNetLemmatizer
 from nltk.corpus import stopwords,wordnet
 import re
